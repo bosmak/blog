@@ -1,0 +1,52 @@
+baseURL = "https://blog.bsmk.xyz/"
+languageCode = "en-us"
+title = "bosmak's blog"
+
+theme = "hugo-winston-theme"
+themesDir = "themes"
+
+pagination.pagerSize = 6
+
+pygmentsCodeFences = true
+pygmentsCodefencesGuessSyntax = true
+pygmentsUseClasses = true
+
+# #484FD9, #6D74F2, #F2762E, #A66844, #BF2B0A
+
+[params]
+  google_analytics_id = "G-FTWNWKN0YK"
+  showAuthorOnHomepage = false
+  showAuthorOnPosts = false
+  showIntroContentOnHomepage = true
+  showPostsOnHomepage = true
+  usePaginationOnHomepage = false
+  limitPostsOnHomepage = 3 # only used if usePaginationOnHomepage is false
+  sortPostsByDateOldestFirst = false
+  addDot = true
+  addFrame = false
+  highlightColor = '#484FD9'
+  baseColor = "#ffffff"
+  baseOffsetColor = "#eaeaea"
+  headingColor = "#1c1b1d"
+  textColor = "#4e5157"
+  dotColor = "#F2762E"
+  enableGoogleFonts = true 
+  googleFontsUrl = "https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+  fontFamilyHeading = "Poppins"
+  fontFamilyParagraph = "Helvetica"
+  fontFamilyMonospace = "monospace"
+
+# markdown config settings https://gohugo.io/getting-started/configuration-markup/#goldmark
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      hardWraps = false
+      unsafe = true
+      xhtml = false
+
+[menu]
+  [[menu.main]]
+    name = "Archive"
+    identifier = "archive"
+    weight = 1
+    url = "/posts/"
