@@ -1,0 +1,45 @@
+{{ define "main" }}
+<div class = "container">
+    <div class="homepage-columns">
+        <!-- Left Column - Profile -->
+        <div class="left-column">
+            <div class="profile">
+                <img src="{{ .Site.Params.profilePhoto | default "/images/pfp.jpg" }}" alt="Profile Photo" class="profile-photo">
+            </div>
+            <div class="profile-description">
+                <p> {{ .Site.Params.profileDescription | markdownify }} </p>
+            </div>
+        </div>
+        <!-- Right Column - Posts -->
+        <div class="right-column">
+            <div>
+                <h1 class="year-heading-homepage">{{ .Site.Params.profileUpdates | markdownify }}</h1>
+            </div>
+      {{ $posts := where site.RegularPages "Type" "posts" }}
+      {{ range ($posts.ByDate.Reverse).GroupByDate "2006" }}
+            <div class="year-group">
+                <h1 class="year-heading-homepage">{{ .Key }}</h1> <!-- Year -->
+                <ul class="post-list-homepage">
+                    {{ range first 5 .Pages }}
+                    <li class="post-item-homepage">
+                        <span class = "post-title-homepage">
+                            <a href="{{ .RelPermalink }}" class="post-title-homepage-link">{{ .Title }}</a>
+                        </span>
+                        <span class="dot-leader"></span>
+                        <span class="post-date-homepage">{{ .Date.Format "02.01" }}</span>
+                    </li>
+                    {{ end }}
+                </ul>
+            </div>
+            {{ else }}
+            <p>No posts yet. Check back soon!</p>
+            {{ end }}
+            {{/* Link to full posts page */}}
+            <div class="all-posts-link-homepage",>
+                <a href="/posts/">View All Posts --></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{ end }}

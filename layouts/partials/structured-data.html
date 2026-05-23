@@ -1,0 +1,33 @@
+{{- $description := .Description | default .Site.Params.description | default .Site.Params.profileDescription | plainify | truncate 160 }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{{ .Title }}",
+  "description": "{{ $description }}",
+  "url": "{{ .Permalink }}",
+  {{- with .Params.image }}
+  "image": "{{ . | absURL }}",
+  {{- end }}
+  {{- with .Date }}
+  "datePublished": "{{ .Format "2006-01-02T15:04:05-07:00" }}",
+  {{- end }}
+  {{- with .Lastmod }}
+  "dateModified": "{{ .Format "2006-01-02T15:04:05-07:00" }}",
+  {{- end }}
+  "author": {
+    "@type": "Person",
+    "name": "{{ .Site.Params.author | default .Site.Title }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ .Site.Title }}"
+    {{- with .Site.Params.logo }},
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ . | absURL }}"
+    }
+    {{- end }}
+  }
+}
+</script>

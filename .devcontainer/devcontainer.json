@@ -1,0 +1,21 @@
+{
+	"name": "Hugo Blog",
+	"image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+	"mounts": [
+    	"source=${localEnv:HOME}/.local/share/opencode,target=/tmp/opencode_host,type=bind"
+    ],
+	"features": {
+		"ghcr.io/atty303/devcontainer-features/mise:1": {},
+		"ghcr.io/postfinance/devcontainer-features/opencode:1": {}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"budparr.language-hugo-vscode"
+			]
+		}
+	},
+	"updateContentCommand": "git clone git@github.com:bosmak/op-skills.git ~/.config/opencode",
+	"postCreateCommand": "mkdir -p /home/vscode/.local/share && ln -sf /tmp/opencode_host /home/vscode/.local/share/opencode",
+	"postStartCommand": "mise install"
+}

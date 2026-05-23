@@ -1,0 +1,51 @@
+/* Override dark code-block background for Mermaid diagram containers */
+.post-content pre.mermaid {
+    background: transparent;
+    font-family: var(--font-family);
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+}
+
+/* Fix code block readability: theme sets font-weight: 100 which makes text look faded */
+.post-content pre:not(.mermaid) {
+    font-weight: 400;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Copy button on code blocks */
+.copy-button {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.25rem 0.6rem;
+    font-size: 0.75rem;
+    font-family: var(--font-family);
+    color: #f8f8f2;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.post-content pre:hover .copy-button,
+.copy-button:focus {
+    opacity: 1;
+}
+
+/* Homepage post list spacing */
+.year-heading-homepage {
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.post-list-homepage {
+    margin-bottom: 0.5rem;
+}
+
+.all-posts-link-homepage {
+    margin-top: 2rem;
+}

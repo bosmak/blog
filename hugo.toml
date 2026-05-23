@@ -1,0 +1,54 @@
+baseURL = 'https://blog.bsmk.xyz/'
+locale = 'en-us'
+title = 'Gustavo Bosmak'
+theme = 'drishtikon'
+description = 'A personal blog powered by Hugo'
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\[', '\]'], ['$$', '$$']]
+          inline = [['\(', '\)']]
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
+
+[params]
+  # Uncomment if you have a logo image
+  # logo = "/path-to-your-logo"
+
+  # Profile section for homepage
+  profilePhoto = "/profile.jpg"
+  profileDescription = """DevOps engineer by trade, currently shifting toward MLOps. This is where I document my experiments with 3D printing, electronics, homelab tinkering, and whatever tech rabbit hole I'm down this week."""
+  profileUpdates = "Hey, I'm Gustavo"
+  github = "https://github.com/bosmak"
+  email = "mailto:me@bsmk.xyz"
+  linkedin = "https://www.linkedin.com/in/gustavo-bosmak"
+  pinterest = ""
+  cv = ""
+  math = false
+  mermaid = true
+
+  # Uncomment to customize colors
+  # backgroundColor = "#f9dc90"
+  # linksColor = "#805690"
+  # textColor = "#333"
+  # fontFamily = "Inter"
+  # tableHeaderColor = "#d46f93"
+  # tableContentColor = "#f89e9d"
+  # tableRowHoverColor = "#ffbbba"
+  # writingCardBackground = "#fdf1cd"
+
+[menu]
+  [[menu.main]]
+    name = "archive"
+    url = "/posts/"
+    weight = 10
+  [[menu.main]]
+    name = "rss"
+    url = "/index.xml"
+    weight = 20
