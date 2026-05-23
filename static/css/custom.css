@@ -50,6 +50,22 @@
     margin-top: 2rem;
 }
 
+/* Post content: spacing for lists and headers */
+.post-content ul,
+.post-content ol {
+    margin-bottom: 1.2rem;
+}
+
+.post-content h2 {
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+.post-content h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
 /* Inline code styling — make backtick `text` visually distinct */
 .post-content :not(pre) > code {
     background-color: #BDCDD6;
