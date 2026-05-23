@@ -34,14 +34,15 @@ description = 'A personal blog powered by Hugo'
   mermaid = true
 
   # Uncomment to customize colors
-  # backgroundColor = "#f9dc90"
+  backgroundColor = "#EEE9DA"
   # linksColor = "#805690"
   # textColor = "#333"
   # fontFamily = "Inter"
-  # tableHeaderColor = "#d46f93"
-  # tableContentColor = "#f89e9d"
-  # tableRowHoverColor = "#ffbbba"
+  tableHeaderColor = "#93BFCF"
+  tableContentColor = "#B3D4DF"
+  tableRowHoverColor = "#CDE3EA"
   # writingCardBackground = "#fdf1cd"
+  writingCardBackground = "#BDCDD6"
 
 [menu]
   [[menu.main]]

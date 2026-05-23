@@ -49,3 +49,15 @@
 .all-posts-link-homepage {
     margin-top: 2rem;
 }
+
+/* Inline code styling — make backtick `text` visually distinct */
+.post-content :not(pre) > code {
+    background-color: #BDCDD6;
+    color: #333;
+    border: 1px solid #e0d8c0;
+    padding: 0.15em 0.4em;
+    border-radius: 3px;
+    font-family: Consolas, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace;
+    font-size: 0.875em;
+    font-weight: 400;
+}

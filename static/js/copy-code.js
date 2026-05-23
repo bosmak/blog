@@ -1,5 +1,6 @@
 (function() {
   document.addEventListener('DOMContentLoaded', function() {
+    // Copy button on code blocks
     document.querySelectorAll('.post-content .highlight').forEach(function(block) {
       const pre = block.querySelector('pre');
       if (!pre) return;
@@ -28,6 +29,17 @@
 
       pre.style.position = 'relative';
       pre.appendChild(button);
+    });
+
+    // Double-click on inline code selects the full text (not just one word)
+    document.querySelectorAll('.post-content :not(pre) > code').forEach(function(code) {
+      code.addEventListener('dblclick', function() {
+        var selection = window.getSelection();
+        var range = document.createRange();
+        range.selectNodeContents(code);
+        selection.removeAllRanges();
+        selection.addRange(range);
+      });
     });
   });
 })();
