@@ -1,13 +1,13 @@
 ---
 name: write-blog-post
-description: Write a blog post for the Hugo blog at /workspaces/blog. Use when the user wants to write, draft, or plan a blog post. Trigger on keywords like "blog post", "write post", "draft post", "new post". Ask questions to fill gaps — never assume details.
+description: Write a blog post for this Hugo blog. Use when the user wants to write, draft, or plan a blog post. Trigger on keywords like "blog post", "write post", "draft post", "new post". Ask questions to fill gaps — never assume details.
 ---
 
 # Blog Post Writing Skill
 
 ## Overview
 
-This skill writes blog posts for a Hugo blog located at `/workspaces/blog`. Posts are Markdown files under `content/posts/`.
+This skill writes blog posts for the Hugo blog in the current working directory. Posts are Markdown files under `content/posts/`.
 
 There are two modes of operation:
 
@@ -73,13 +73,13 @@ draft: true
 
 - `date`: Use the current date in ISO 8601 format with timezone.
 - `description`: A concise summary. This appears in previews and SEO.
-- `image` / `imageAltAttribute`: Optional. If the post has a header image, reference it here. Place images under `/workspaces/blog/static/images/`.
+- `image` / `imageAltAttribute`: Optional. If the post has a header image, reference it here. Place images under `static/images/`.
 - `tags`: Lowercase, hyphenated. Use existing tags when applicable, add new ones as needed.
 - `draft: true`: Always start as draft. The user will change to `false` when ready to publish.
 
 ## File Location
 
-Posts go in: `/workspaces/blog/content/posts/`
+Posts go in: `content/posts/`
 
 Filename format: `short-kebab-case-description.md`
 
