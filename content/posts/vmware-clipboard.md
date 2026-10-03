@@ -2,8 +2,7 @@
 title: "VMware Host-Guest Clipboard Sync on Wayland"
 date: 2026-05-17T16:26:00-03:00
 description: "How to get bi-directional clipboard working between a VMware host and a Wayland guest on CachyOS."
-image: images/tech_note_header.png
-imageAltAttribute: "Terminal screenshot showing clipboard synchronization configurations and architecture flow."
+mermaid: true
 tags:
   - cachyos
   - wayland

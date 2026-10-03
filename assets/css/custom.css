@@ -1,0 +1,46 @@
+/* -------------------------------------------------------------------------
+   Site-level additions on top of the nuno theme.
+
+   Today this is just the mermaid diagram container: nuno doesn't ship mermaid
+   support, so the styles for it live here. The container reuses the theme's
+   own tokens (--surface, --line, --ink, --accent, --font) so a light/dark or
+   brown/green switch recolours the diagrams with the rest of the page.
+   ------------------------------------------------------------------------- */
+
+.prose pre.mermaid {
+    background: var(--surface);
+    color: var(--ink);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 24px 16px;
+    margin: 1.5rem 0;
+    text-align: center;
+    overflow-x: auto;
+    font-family: var(--font);
+    font-weight: 600;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.prose pre.mermaid:not([data-processed="true"]) {
+    /* Shown only until mermaid has finished rendering. After processing
+       mermaid replaces the <pre>'s children with an <svg>, so the loading
+       hint is gone anyway; this just keeps a stale pre from looking blank. */
+    color: var(--muted);
+    font-style: italic;
+    font-weight: 400;
+}
+
+.prose pre.mermaid svg {
+    /* mermaid centres by default; keep that. Cap width on phones. */
+    max-width: 100%;
+    height: auto;
+    color: var(--ink);
+    font-family: var(--font);
+}
+
+/* Tighter spacing when a diagram sits directly under or above a heading. */
+.prose h2 + pre.mermaid,
+.prose h3 + pre.mermaid {
+    margin-top: 0.5rem;
+}

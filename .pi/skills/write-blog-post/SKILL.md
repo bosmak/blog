@@ -62,8 +62,9 @@ Use this Hugo front matter template:
 title: "Descriptive Title Here"
 date: YYYY-MM-DDTHH:MM:SSZZZ
 description: "A one-sentence summary of what the post covers."
-image: images/some-header-image.png
-imageAltAttribute: "Description of the header image for accessibility."
+cover:
+  image: images/some-header-image.png
+  alt: "Description of the header image for accessibility."
 tags:
   - relevant-tag
   - another-tag
@@ -73,9 +74,31 @@ draft: true
 
 - `date`: Use the current date in ISO 8601 format with timezone.
 - `description`: A concise summary. This appears in previews and SEO.
-- `image` / `imageAltAttribute`: Optional. If the post has a header image, reference it here. Place images under `static/images/`.
+- `cover`: Optional. nuno doesn't render cover images in the page body on purpose — the page is cover-free by design — but the `cover` block sets the social-share preview (`og:image` / `twitter:image`) on LinkedIn, WhatsApp, etc. Drop the whole `cover` block if the post has no header image. Place images under `assets/images/`, not `static/`; nuno's image pipeline reads from `assets/` and processes the file at build time.
 - `tags`: Lowercase, hyphenated. Use existing tags when applicable, add new ones as needed.
 - `draft: true`: Always start as draft. The user will change to `false` when ready to publish.
+
+### Mermaid
+
+The project ships a Mermaid integration that nuno doesn't include by default. To enable it on a post, add `mermaid: true` to the front matter. Either of these will render:
+
+The toggle gates the head's CDN + init scripts. Without it, the render hook still wraps your code in `<pre class="mermaid">` but the library never loads, so the diagram shows up as raw text instead of an SVG. A stale post that used to render under an older theme is the usual way to hit this.
+
+````markdown
+```mermaid
+flowchart LR
+    A --> B
+```
+````
+
+```markdown
+{{< mermaid >}}
+flowchart LR
+    A --> B
+{{< /mermaid >}}
+```
+
+Diagrams pick up the active theme and ground from the same `--ink` / `--muted` / `--accent` / `--surface` / `--line` / `--font` tokens the rest of the site uses, so a light/dark or brown/green switch recolours them on the next paint. Don't hand-pick colours — the point of the integration is that they follow the theme.
 
 ## File Location
 

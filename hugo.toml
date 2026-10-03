@@ -1,55 +1,100 @@
-baseURL = 'https://blog.bsmk.xyz/'
-locale = 'en-us'
-title = 'Gustavo Bosmak'
-theme = 'drishtikon'
-description = 'A personal blog powered by Hugo'
+baseURL = "https://blog.bsmk.xyz/"
+locale = "en-us"
+title = "Gustavo Bosmak"
+theme = "nuno"
+description = "DevOps engineer by trade, currently shifting toward MLOps. This is where I document my experiments with 3D printing, electronics, homelab tinkering, and whatever tech rabbit hole I'm down this week."
+
+enableRobotsTXT = true
+
+[pagination]
+  pagerSize = 20
+
+[taxonomies]
+  category = "categories"
+  series = "series"
+  tag = "tags"
+
+# JSON is the ⌘K search index and the theme needs it on the home page.
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+# Drives the "Related reading" block under a post. Tags are the strongest
+# signal; date only breaks ties.
+[related]
+  threshold = 80
+  includeNewer = true
+  toLower = true
+  [[related.indices]]
+    name = "tags"
+    weight = 100
+  [[related.indices]]
+    name = "categories"
+    weight = 60
+  [[related.indices]]
+    name = "series"
+    weight = 40
+  [[related.indices]]
+    name = "date"
+    weight = 10
 
 [markup]
-  [markup.goldmark]
-    [markup.goldmark.extensions]
-      [markup.goldmark.extensions.passthrough]
-        enable = true
-        [markup.goldmark.extensions.passthrough.delimiters]
-          block = [['\[', '\]'], ['$$', '$$']]
-          inline = [['\(', '\)']]
-
-[caches]
-  [caches.images]
-    dir = ':cacheDir/images'
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+    ordered = false
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.highlight]
+    noClasses = false
+  [markup.goldmark.extensions.passthrough]
+    enable = true
+    [markup.goldmark.extensions.passthrough.delimiters]
+      block = [['\[', '\]'], ['$$', '$$']]
+      inline = [['\(', '\)']]
 
 [params]
-  # Uncomment if you have a logo image
-  # logo = "/path-to-your-logo"
+  # --- palette -------------------------------------------------------------
+  accent = "#e8b04b"
+  ground = "brown"
+  defaultTheme = "dark"
 
-  # Profile section for homepage
-  profilePhoto = "/profile.jpg"
-  profileDescription = """DevOps engineer by trade, currently shifting toward MLOps. This is where I document my experiments with 3D printing, electronics, homelab tinkering, and whatever tech rabbit hole I'm down this week."""
-  profileUpdates = "Hey, I'm Gustavo"
-  github = "https://github.com/bosmak"
-  email = "mailto:me@bsmk.xyz"
-  linkedin = "https://www.linkedin.com/in/gustavo-bosmak"
-  pinterest = ""
-  cv = ""
-  math = false
-  mermaid = true
+  # --- identity ------------------------------------------------------------
+  brand = "Gustavo Bosmak"
+  description = "DevOps engineer by trade, currently shifting toward MLOps. This is where I document my experiments with 3D printing, electronics, homelab tinkering, and whatever tech rabbit hole I'm down this week."
+  tagline = "Notes from the homelab and beyond."
+  copyright = "© 2026 Gustavo Bosmak"
+  profileBio = "DevOps engineer by trade, currently shifting toward MLOps. This is where I document my experiments with 3D printing, electronics, homelab tinkering, and whatever tech rabbit hole I'm down this week."
+  portrait = "profile.jpg"
 
-  # Uncomment to customize colors
-  backgroundColor = "#EEE9DA"
-  # linksColor = "#805690"
-  # textColor = "#333"
-  # fontFamily = "Inter"
-  tableHeaderColor = "#93BFCF"
-  tableContentColor = "#B3D4DF"
-  tableRowHoverColor = "#CDE3EA"
-  # writingCardBackground = "#fdf1cd"
-  writingCardBackground = "#BDCDD6"
+  # --- posts ---------------------------------------------------------------
+  readingProgress = true
+
+  # --- home ----------------------------------------------------------------
+  postsOnHome = 6
+  homeHeader = "profile"
+  homeStyle = "grid"
+  mainSections = ["posts"]
+  DateFormat = "2 January 2006"
+
+  [params.author]
+    name = "Gustavo Bosmak"
+
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/bosmak"
+  [[params.socialIcons]]
+    name = "email"
+    url = "mailto:me@bsmk.xyz"
+  [[params.socialIcons]]
+    name = "linkedin"
+    url = "https://www.linkedin.com/in/gustavo-bosmak"
 
 [menu]
   [[menu.main]]
-    name = "archive"
+    identifier = "posts"
+    name = "Writing"
     url = "/posts/"
     weight = 10
-  [[menu.main]]
-    name = "rss"
-    url = "/index.xml"
-    weight = 20
+
+[security.funcs]
+  getenv = ["^HUGO_", "^CI$"]
