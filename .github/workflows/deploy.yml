@@ -19,14 +19,10 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: true
-
       - uses: jdx/mise-action@v2
-
       - name: Build Hugo site
         run: hugo build --gc --minify
-
       - uses: actions/configure-pages@v4
-
       - uses: actions/upload-pages-artifact@v3
         with:
           path: public
